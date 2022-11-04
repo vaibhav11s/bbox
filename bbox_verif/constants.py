@@ -1,0 +1,3 @@
+C_ANDN = 1
+C_ORN = 2
+C_XNOR = 3

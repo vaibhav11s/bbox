@@ -23,3 +23,6 @@ clean_build:
 	@rm -rf bbox_verif/__pycache__
 	@rm -rf results.xml
 	@echo "Cleaned"
+
+.PHONY: sim_again
+sim_again: clean_build simulate
