@@ -14,4 +14,8 @@ Details: Has the macros used for instruction comparison
 `define ANDN 1
 `define ORN 2
 `define XNOR 3
+`define CLZ 4
+`define CLZW 5
+`define CTZ 6
+`define CTZW 7
 
