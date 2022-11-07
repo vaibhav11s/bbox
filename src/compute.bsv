@@ -46,6 +46,22 @@ function BBoxOutput fn_compute(BBoxInput inp);
       result = fn_xnor(inp.rs1, inp.rs2);
       valid = True;
     end
+    `CLZ: begin
+      result = fn_clz(inp.rs1);
+      valid = True;
+    end
+    `CLZW: begin
+      result = fn_clzw(inp.rs1);
+      valid = True;
+    end
+    `CTZ: begin
+      result = fn_ctz(inp.rs1);
+      valid = True;
+    end
+    `CTZW: begin
+      result = fn_ctzw(inp.rs1);
+      valid = True;
+    end
     default: begin
       result = 0;
       valid = False;
