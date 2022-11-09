@@ -127,7 +127,15 @@ base = 'RV64'
 if base == 'RV32':
     tf.add_option('XLEN', [32])
     tf.add_option(('instr', 'instr_name', 'single_opd'),
-                  [(ZBB_ANDN, 'andn', 0), (ZBB_ORN, 'orn', 0), (ZBB_XNOR, 'xnor', 0)])
+                  [
+        (ZBB_ANDN, 'andn', 0),
+        (ZBB_ORN, 'orn', 0),
+        (ZBB_XNOR, 'xnor', 0),
+        (ZBB_CLZ, 'clz', 1),
+        (ZBB_CLZW, 'clzw', 1),
+        (ZBB_CTZ, 'ctz', 1),
+        (ZBB_CTZW, 'ctzw', 1),
+    ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).
     # To run multiple instr - tf.add_option(((('instr','instr_name','single_opd'), [(1, 'andn', 0),(2,'clz',1),(...)])
@@ -136,7 +144,15 @@ if base == 'RV32':
 elif base == 'RV64':
     tf.add_option('XLEN', [64])
     tf.add_option(('instr', 'instr_name', 'single_opd'),
-                  [(ZBB_ANDN, 'andn', 0), (ZBB_ORN, 'orn', 0), (ZBB_XNOR, 'xnor', 0)])
+                  [
+        (ZBB_ANDN, 'andn', 0),
+        (ZBB_ORN, 'orn', 0),
+        (ZBB_XNOR, 'xnor', 0),
+        (ZBB_CLZ, 'clz', 1),
+        (ZBB_CLZW, 'clzw', 1),
+        (ZBB_CTZ, 'ctz', 1),
+        (ZBB_CTZW, 'ctzw', 1),
+    ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).
     # To run multiple instr - tf.add_option(((('instr','instr_name','single_opd'), [(1, 'andn', 0),(2,'clz',1),(...)])

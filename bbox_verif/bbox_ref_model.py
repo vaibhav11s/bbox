@@ -33,7 +33,18 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBB_XNOR:  # xnor vrfy
         res = Zbb.xnor(rs1, rs2, XLEN)
         valid = '1'
-
+    elif instr == ZBB_CLZ:
+        res = Zbb.clz(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_CLZW:
+        res = Zbb.clzw(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_CTZ:
+        res = Zbb.ctz(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_CTZW:
+        res = Zbb.ctzw(rs1,XLEN)
+        valid = '1'
     # logic for all other instr ends
     else:
         res = 0
