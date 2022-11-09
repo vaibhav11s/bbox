@@ -61,3 +61,23 @@ function Bit#(XLEN) fn_ctzw(Bit#(XLEN) rs); // TODO :
       add = False;
   return result;
 endfunction
+
+function Bit#(XLEN) fn_cpop(Bit#(XLEN) rs); // TODO :
+  Bit#(XLEN) result = 0;
+  Integer ln = valueOf(XLEN);
+  Integer i = 0;
+  for(i = 0; i < ln; i = i + 1)
+    if(rs[i] == 1)
+      result = result + 1;
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_cpopw(Bit#(XLEN) rs); // TODO :
+  Bit#(XLEN) result = 0;
+  Integer ln = valueOf(XLEN);
+  Integer i = 31;
+  for(i = 31; i >= 0; i = i - 1)
+    if(rs[i] == 1)
+      result = result + 1;
+  return result;
+endfunction
