@@ -45,6 +45,12 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBB_CTZW:
         res = Zbb.ctzw(rs1,XLEN)
         valid = '1'
+    elif instr == ZBB_CPOP:
+        res = Zbb.cpop(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_CPOPW:
+        res = Zbb.cpopw(rs1,XLEN)
+        valid = '1'
     # logic for all other instr ends
     else:
         res = 0

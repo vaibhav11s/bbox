@@ -95,3 +95,27 @@ def ctzw(rs, XLEN):
             break
 
     return count
+
+def cpop(rs, XLEN):
+    """counts the number of 1’s (i.e., set bits) in the source register."""
+    
+    b = getBits(rs, XLEN)
+    count = 0
+
+    for B in b:
+        if B == '1':
+            count+=1
+    
+    return count
+
+def cpopw(rs, XLEN):
+    """counts the number of 1’s (i.e., set bits) in the least-significant word of the source register"""
+
+    b = getBits(rs, XLEN)
+    count = 0
+
+    for B in (b[-32:]):
+        if B == '1':
+            count+=1
+    
+    return count
