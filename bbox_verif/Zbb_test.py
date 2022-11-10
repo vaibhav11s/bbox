@@ -96,17 +96,19 @@ def ctzw(rs, XLEN):
 
     return count
 
+
 def cpop(rs, XLEN):
     """counts the number of 1’s (i.e., set bits) in the source register."""
-    
+
     b = getBits(rs, XLEN)
     count = 0
 
     for B in b:
         if B == '1':
-            count+=1
-    
+            count += 1
+
     return count
+
 
 def cpopw(rs, XLEN):
     """counts the number of 1’s (i.e., set bits) in the least-significant word of the source register"""
@@ -116,101 +118,97 @@ def cpopw(rs, XLEN):
 
     for B in (b[-32:]):
         if B == '1':
-            count+=1
-    
+            count += 1
+
     return count
+
 
 def max(rs1, rs2, XLEN):
     """returns the larger of two signed integers"""
 
     b1, b2 = getBits(rs1, XLEN), getBits(rs2, XLEN)
 
-    if b1[0]==b2[0]:
-        if rs1>rs2:
+    if b1[0] == b2[0]:
+        if rs1 > rs2:
             return rs1
         return rs2
 
-    if b1[0]=='0':
+    if b1[0] == '0':
         return rs1
 
     return rs2
-    
+
 
 def maxu(rs1, rs2, XLEN):
     """returns the larger of two unsigned integers"""
 
-    if rs1>rs2:
+    if rs1 > rs2:
         return rs1
     return rs2
+
 
 def min(rs1, rs2, XLEN):
     """returns the smaller of two signed integers"""
 
     b1, b2 = getBits(rs1, XLEN), getBits(rs2, XLEN)
-    
-    if b1[0]==b2[0]:
-        if rs1<rs2:
+
+    if b1[0] == b2[0]:
+        if rs1 < rs2:
             return rs1
         return rs2
 
-    if b1[0]=='0':
+    if b1[0] == '0':
         return rs2
 
     return rs1
 
+
 def minu(rs1, rs2, XLEN):
     """returns the smaller of two unsigned integers"""
 
-    if rs1<rs2:
+    if rs1 < rs2:
         return rs1
     return rs2
+
 
 def sextb(rs, XLEN):
     """sign-extends the least-significant byte in the source to XLEN by copying the most-significant bit in the byte to all of the more-significant bits"""
 
     b = getBits(rs, XLEN)
     c = b[-8]
+    ba = b[-8:]
+    i = 0
+    while i < (XLEN-8):
+        ba = c + ba
+        i += 1
 
-    i=0
-    while i<(XLEN-8):
-        b[i]=c
-        i+=1
+    return int(ba, 2)
 
-    return int(b,2)
 
 def sexth(rs, XLEN):
     """sign-extends the least-significant halfword in rs to XLEN by copying the most-significant bit in the halfword to all of the more-significant bits"""
 
     b = getBits(rs, XLEN)
     c = b[-16]
+    ba = b[-16:]
 
-    i=0
-    while i<(XLEN-16):
-        b[i]=c
-        i+=1
+    i = 0
+    while i < (XLEN-16):
+        ba = c + ba
+        i += 1
 
-    return int(b,2)
+    return int(ba, 2)
+
 
 def zexth(rs, XLEN):
     """zero-extends the least-significant halfword of the source to XLEN by inserting 0’s into all of the bits more significant"""
 
     b = getBits(rs, XLEN)
 
-    i=0
-    while i<(XLEN-16):
-        b[i]=0
-        i+=1
+    ba = b[-16:]
+    i = 0
+    while i < (XLEN-16):
+        ba = '0' + ba
+        i += 1
 
-    return int(b,2)
-
-
-
-
-    
-
-
-
-
-
-
-        
+    return int(ba, 2)
