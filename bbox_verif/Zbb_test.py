@@ -182,10 +182,10 @@ def sexth(rs, XLEN):
     """sign-extends the least-significant halfword in rs to XLEN by copying the most-significant bit in the halfword to all of the more-significant bits"""
 
     b = getBits(rs, XLEN)
-    c = b[-((XLEN/2)-1)]
+    c = b[-16]
 
     i=0
-    while i<(XLEN/2):
+    while i<(XLEN-16):
         b[i]=c
         i+=1
 
@@ -197,7 +197,7 @@ def zexth(rs, XLEN):
     b = getBits(rs, XLEN)
 
     i=0
-    while i<(XLEN/2):
+    while i<(XLEN-16):
         b[i]=0
         i+=1
 
