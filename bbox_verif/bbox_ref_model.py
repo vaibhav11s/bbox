@@ -81,8 +81,20 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBB_ROR:
         res = Zbb.ror(rs1, rs2, XLEN)
         valid = '1'
+    elif instr == ZBB_RORI:
+        res = Zbb.ror(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBB_RORIW:
+        res = Zbb.rorw(rs1, rs2, XLEN)
+        valid = '1'
     elif instr == ZBB_RORW:
         res = Zbb.rorw(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBB_ORCB:
+        res = Zbb.orcb(rs1, XLEN)
+        valid = '1'
+    elif instr == ZBB_REV8:
+        res = Zbb.rev8(rs1, XLEN)
         valid = '1'
     # logic for all other instr ends
     else:

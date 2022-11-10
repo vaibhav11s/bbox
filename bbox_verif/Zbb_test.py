@@ -278,3 +278,44 @@ def rorw(rs1, rs2, XLEN):
         i += 1
 
     return int(sub, 2)
+
+
+def orcb(rs, XLEN):
+    """Combines the bits within each byte using bitwise logical OR"""
+
+    b = getBits(rs, XLEN)
+    s0 = '00000000'
+    s1 = '11111111'
+    ans = ''
+    c = 0
+    cnt = 0
+
+    for B in b:
+        cnt += 1
+        if B == '1':
+            c = 1
+        if cnt % 8 == 0:
+            if c == 0:
+                ans = ans + s0
+            if c == 1:
+                ans = ans + s1
+            c = 0
+
+    return int(ans, 2)
+
+
+def rev8(rs, XLEN):
+    """reverses the order of the bytes in rs"""
+
+    b = getBits(rs, XLEN)
+    ans = ''
+    i = 0
+
+    while i < XLEN:
+        j = i + 7
+        while j >= i:
+            ans = ans + b[j]
+            j -= 1
+        i += 8
+
+    return int(ans, 2)
