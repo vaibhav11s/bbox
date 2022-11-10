@@ -86,6 +86,18 @@ function BBoxOutput fn_compute(BBoxInput inp);
       result = fn_minu(inp.rs1,inp.rs2);
       valid = True;
     end
+    `SEXTB: begin
+      result = fn_sextb(inp.rs1);
+      valid = True;
+    end
+    `SEXTH: begin
+      result = fn_sexth(inp.rs1);
+      valid = True;
+    end
+    `ZEXTH: begin
+      result = fn_zexth(inp.rs1);
+      valid = True;
+    end
     default: begin
       result = 0;
       valid = False;

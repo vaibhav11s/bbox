@@ -24,3 +24,6 @@ Details: Has the macros used for instruction comparison
 `define MAXU 11
 `define MIN 12
 `define MINU 13
+`define SEXTB 14
+`define SEXTH 15
+`define ZEXTH 16

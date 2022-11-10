@@ -85,8 +85,8 @@ endfunction
 function Bit#(XLEN) fn_max(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Maximum
   Int#(XLEN) s1 = unpack(rs1);
   Int#(XLEN) s2 = unpack(rs2);
-  Bit#(XLEN) res = pack(max(s1,s2));
-  return res;
+  Bit#(XLEN) result = pack(max(s1,s2));
+  return result;
 endfunction
 
 function Bit#(XLEN) fn_maxu(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Unsigned Maximum
@@ -96,10 +96,37 @@ endfunction
 function Bit#(XLEN) fn_min(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Minimum
   Int#(XLEN) s1 = unpack(rs1);
   Int#(XLEN) s2 = unpack(rs2);
-  Bit#(XLEN) res = pack(min(s1,s2));
-  return res;
+  Bit#(XLEN) result = pack(min(s1,s2));
+  return result;
 endfunction
 
 function Bit#(XLEN) fn_minu(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Unsigned Minimum
   return min(rs1,rs2);
+endfunction
+
+function Bit#(XLEN) fn_sextb(Bit#(XLEN) rs); // Sign-extend halfword
+  Bit#(XLEN) result = rs;
+  Integer ln = valueOf(XLEN);
+  Integer i = 8;
+  for(i = 8; i < ln; i = i + 1)
+    result[i] = rs[7]; 
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_sexth(Bit#(XLEN) rs); 
+  Bit#(XLEN) result = rs;
+  Integer ln = valueOf(XLEN);
+  Integer i = 16;
+  for(i = 16; i < ln; i = i + 1)
+    result[i] = rs[15];
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_zexth(Bit#(XLEN) rs); // Zero-extend halfword
+  Integer ln = valueOf(XLEN);
+  Bit#(XLEN) result = rs;
+  Integer i = 16;
+  for(i = 16; i < ln; i = i + 1)
+    result[i] = 0;
+  return result;
 endfunction
