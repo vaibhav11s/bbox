@@ -137,6 +137,10 @@ if base == 'RV32':
         (ZBB_CTZW, 'ctzw', 1),
         (ZBB_CPOP, 'cpop', 1),
         (ZBB_CPOPW, 'cpopw', 1)
+        (ZBB_MAX, 'max', 0),
+        (ZBB_MAXU, 'maxu', 0),
+        (ZBB_MIN, 'min', 0),
+        (ZBB_MINU, 'minu', 0)
     ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).
@@ -156,6 +160,10 @@ elif base == 'RV64':
         (ZBB_CTZW, 'ctzw', 1),
         (ZBB_CPOP, 'cpop', 1),
         (ZBB_CPOPW, 'cpopw', 1)
+        (ZBB_MAX, 'max', 0),
+        (ZBB_MAXU, 'maxu', 0),
+        (ZBB_MIN, 'min', 0),
+        (ZBB_MINU, 'minu', 0)
     ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).

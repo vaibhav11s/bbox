@@ -119,3 +119,53 @@ def cpopw(rs, XLEN):
             count+=1
     
     return count
+
+def max(rs1, rs2, XLEN):
+    """returns the larger of two signed integers"""
+
+    b1, b2 = getBits(rs1, XLEN), getBits(rs2, XLEN)
+
+    if b1[0]==b2[0]:
+        if rs1>rs2:
+            return rs1
+        return rs2
+
+    if b1[0]=='0':
+        return rs1
+
+    return rs2
+    
+
+def maxu(rs1, rs2, XLEN):
+    """returns the larger of two unsigned integers"""
+
+    if rs1>rs2:
+        return rs1
+    return rs2
+
+def min(rs1, rs2, XLEN):
+    """returns the smaller of two signed integers"""
+
+    b1, b2 = getBits(rs1, XLEN), getBits(rs2, XLEN)
+    
+    if b1[0]==b2[0]:
+        if rs1<rs2:
+            return rs1
+        return rs2
+
+    if b1[0]=='0':
+        return rs2
+
+    return rs1
+
+def minu(rs1, rs2, XLEN):
+    """returns the smaller of two unsigned integers"""
+
+    if rs1<rs2:
+        return rs1
+    return rs2
+
+
+
+
+        

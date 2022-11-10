@@ -51,6 +51,15 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBB_CPOPW:
         res = Zbb.cpopw(rs1,XLEN)
         valid = '1'
+    elif instr == ZBB_MAX:
+        res = Zbb.max(rs1,rs2,XLEN)
+        valid = '1'
+    elif instr == ZBB_MAXU:
+        res = Zbb.maxu(rs1,rs2,XLEN)
+    elif instr == ZBB_MIN:
+        res = Zbb.min(rs1,rs2,XLEN)
+    elif instr == ZBB_MINU:
+        res = Zbb.minu(rs1,rs2,XLEN)
     # logic for all other instr ends
     else:
         res = 0
