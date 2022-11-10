@@ -21,6 +21,7 @@ Note - if instr has single operand, take rs1 as an operand
 
 
 import Zbb_test as Zbb
+import Zbc_test as Zbc
 from constants import *
 def bbox_rm(instr, rs1, rs2, XLEN):
 
@@ -96,6 +97,12 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBB_REV8:
         res = Zbb.rev8(rs1, XLEN)
         valid = '1'
+    elif instr == ZBC_CLMUL:
+        res = Zbc.clmul(rs1, rs2, XLEN)
+    elif instr == ZBC_CLMULH:
+        res = Zbc.clmulh(rs1, rs2, XLEN)
+    elif instr == ZBC_CLMULR:
+        res = Zbc.clmulr(rs1, rs2, XLEN)
     # logic for all other instr ends
     else:
         res = 0
