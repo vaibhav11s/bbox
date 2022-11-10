@@ -27,3 +27,9 @@ Details: Has the macros used for instruction comparison
 `define SEXTB 14
 `define SEXTH 15
 `define ZEXTH 16
+`define ROL 17
+`define ROLW 18
+`define ROR 19
+`define RORI 20
+`define RORIW 21
+`define RORW 22

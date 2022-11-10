@@ -98,6 +98,30 @@ function BBoxOutput fn_compute(BBoxInput inp);
       result = fn_zexth(inp.rs1);
       valid = True;
     end
+    `ROL: begin
+      result = fn_rol(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `ROLW: begin
+      result = fn_rolw(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `ROR: begin
+      result = fn_ror(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `RORI: begin
+      result = fn_ror(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `RORIW: begin
+      result = fn_rorw(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `RORW: begin
+      result = fn_rorw(inp.rs1,inp.rs2);
+      valid = True;
+    end
     default: begin
       result = 0;
       valid = False;

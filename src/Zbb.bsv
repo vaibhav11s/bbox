@@ -104,7 +104,7 @@ function Bit#(XLEN) fn_minu(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Unsigned Minimum
   return min(rs1,rs2);
 endfunction
 
-function Bit#(XLEN) fn_sextb(Bit#(XLEN) rs); // Sign-extend halfword
+function Bit#(XLEN) fn_sextb(Bit#(XLEN) rs); // Sign-extend byte
   Bit#(XLEN) result = rs;
   Integer ln = valueOf(XLEN);
   Integer i = 8;
@@ -113,7 +113,7 @@ function Bit#(XLEN) fn_sextb(Bit#(XLEN) rs); // Sign-extend halfword
   return result;
 endfunction
 
-function Bit#(XLEN) fn_sexth(Bit#(XLEN) rs); 
+function Bit#(XLEN) fn_sexth(Bit#(XLEN) rs);  // Sign-extend halfword
   Bit#(XLEN) result = rs;
   Integer ln = valueOf(XLEN);
   Integer i = 16;
@@ -130,3 +130,81 @@ function Bit#(XLEN) fn_zexth(Bit#(XLEN) rs); // Zero-extend halfword
     result[i] = 0;
   return result;
 endfunction
+
+function Bit#(XLEN) fn_rol(Bit#(XLEN) rs1, Bit#(XLEN) rs2) provisos (Log#(XLEN,b), Mul#(XLEN,2,x2len)); // Rotate Left (Register)
+  Integer ln = valueOf(XLEN);
+  Integer ln2 = valueOf(x2len);
+  Bit#(6) shamt = rs2[5:0];
+  if(ln == 32)
+    shamt[5] = 0;
+  Bit#(XLEN) zeros = 0;
+  Bit#(x2len) x = {zeros,rs1} << shamt;
+  Bit#(XLEN) result = x[ln2-1:ln] | x[ln-1:0];
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_rolw(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Rotate Left Word (Register)
+  Bit#(32) zeros = 0; 
+  Integer ln = valueOf(XLEN);
+  Bit#(5) shamt = rs2[4:0];
+  Bit#(64) x = {zeros,rs1[31:0]} << shamt;
+  Bit#(32) w = x[63:32]|x[31:0];
+  Bit#(XLEN) result = rs1;
+  Integer i = 0;
+  for(i = 0; i < 32; i = i + 1)
+    result[i] = w[i];
+  for(i = 32; i < ln; i = i + 1)
+    result[i] = w[31];
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_ror(Bit#(XLEN) rs1, Bit#(XLEN) rs2) provisos (Log#(XLEN,b),Mul#(XLEN,2,x2len)); // Rotate Right (Register)
+  Integer ln = valueOf(XLEN);
+  Integer ln2 = valueOf(x2len);
+  Bit#(6) shamt = rs2[5:0];
+  if(ln == 32)
+    shamt[5] = 0;
+  Bit#(XLEN) zeros = 0;
+  Bit#(x2len) x = {rs1,zeros} >> shamt;
+  Bit#(XLEN) result = x[ln2-1:ln] | x[ln-1:0];
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_rorw(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Rotate Right Word (Register)
+  Bit#(32) zeros = 0; 
+  Integer ln = valueOf(XLEN);
+  Bit#(5) shamt = rs2[4:0];
+  Bit#(64) x = {rs1[31:0],zeros} >> shamt;
+  Bit#(32) w = x[63:32]|x[31:0];
+  Bit#(XLEN) result = rs1;
+  Integer i = 0;
+  for(i = 0; i < 32; i = i + 1)
+    result[i] = w[i];
+  for(i = 32; i < ln; i = i + 1)
+    result[i] = w[31];
+  return result;
+endfunction
+
+
+// function Bit#(XLEN) fn_orcb(Bit#(XLEN) rs1); // Bitwise OR-Combine, byte granule
+//   let xlen = valueOf(XLEN);
+//   Bit#(XLEN) result = 0;
+//   for(Integer i=0; i<xlen; i=i+8) begin
+//     Bit#(8) dbyte = rs1[i+7:i];
+//     Bit#(8) new_byte = signExtend(|(dbyte));
+//     result[i+7:i] = new_byte;
+//   end
+//   return result;
+// endfunction
+
+// function Bit#(XLEN) fn_rev8(Bit#(XLEN) rs1); // Byte-reverse register
+//   let xlen = valueOf(XLEN);
+//   Bit#(XLEN) result = 0;
+//   Integer j = xlen-1;
+//   for(Integer i=0; i<xlen; i=i+8) begin
+//     Bit#(8) dbyte = rs1[j:j-7];
+//     result[i+7:i] = dbyte;
+//     j = j-8;
+//   end
+//   return result;
+// endfunction
