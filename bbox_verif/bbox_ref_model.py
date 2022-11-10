@@ -56,10 +56,22 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         valid = '1'
     elif instr == ZBB_MAXU:
         res = Zbb.maxu(rs1,rs2,XLEN)
+        valid = '1'
     elif instr == ZBB_MIN:
         res = Zbb.min(rs1,rs2,XLEN)
+        valid = '1'
     elif instr == ZBB_MINU:
         res = Zbb.minu(rs1,rs2,XLEN)
+        valid = '1'
+    elif instr == ZBB_SEXTB:
+        res = Zbb.sextb(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_SEXTH:
+        res = Zbb.sexth(rs1,XLEN)
+        valid = '1'
+    elif instr == ZBB_ZEXTH:
+        res = Zbb.zexth(rs1,XLEN)
+        valid = '1'
     # logic for all other instr ends
     else:
         res = 0

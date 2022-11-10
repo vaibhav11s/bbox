@@ -165,6 +165,51 @@ def minu(rs1, rs2, XLEN):
         return rs1
     return rs2
 
+def sextb(rs, XLEN):
+    """sign-extends the least-significant byte in the source to XLEN by copying the most-significant bit in the byte to all of the more-significant bits"""
+
+    b = getBits(rs, XLEN)
+    c = b[-8]
+
+    i=0
+    while i<(XLEN-8):
+        b[i]=c
+        i+=1
+
+    return int(b,2)
+
+def sexth(rs, XLEN):
+    """sign-extends the least-significant halfword in rs to XLEN by copying the most-significant bit in the halfword to all of the more-significant bits"""
+
+    b = getBits(rs, XLEN)
+    c = b[-((XLEN/2)-1)]
+
+    i=0
+    while i<(XLEN/2):
+        b[i]=c
+        i+=1
+
+    return int(b,2)
+
+def zexth(rs, XLEN):
+    """zero-extends the least-significant halfword of the source to XLEN by inserting 0’s into all of the bits more significant"""
+
+    b = getBits(rs, XLEN)
+
+    i=0
+    while i<(XLEN/2):
+        b[i]=0
+        i+=1
+
+    return int(b,2)
+
+
+
+
+    
+
+
+
 
 
 
