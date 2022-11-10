@@ -34,44 +34,52 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         res = Zbb.xnor(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_CLZ:
-        res = Zbb.clz(rs1,XLEN)
+        res = Zbb.clz(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_CLZW:
-        res = Zbb.clzw(rs1,XLEN)
+        res = Zbb.clzw(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_CTZ:
-        res = Zbb.ctz(rs1,XLEN)
+        res = Zbb.ctz(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_CTZW:
-        res = Zbb.ctzw(rs1,XLEN)
+        res = Zbb.ctzw(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_CPOP:
-        res = Zbb.cpop(rs1,XLEN)
+        res = Zbb.cpop(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_CPOPW:
-        res = Zbb.cpopw(rs1,XLEN)
+        res = Zbb.cpopw(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_MAX:
-        res = Zbb.max(rs1,rs2,XLEN)
+        res = Zbb.max(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_MAXU:
-        res = Zbb.maxu(rs1,rs2,XLEN)
+        res = Zbb.maxu(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_MIN:
-        res = Zbb.min(rs1,rs2,XLEN)
+        res = Zbb.min(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_MINU:
-        res = Zbb.minu(rs1,rs2,XLEN)
+        res = Zbb.minu(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_SEXTB:
-        res = Zbb.sextb(rs1,XLEN)
+        res = Zbb.sextb(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_SEXTH:
-        res = Zbb.sexth(rs1,XLEN)
+        res = Zbb.sexth(rs1, XLEN)
         valid = '1'
     elif instr == ZBB_ZEXTH:
-        res = Zbb.zexth(rs1,XLEN)
+        res = Zbb.zexth(rs1, XLEN)
         valid = '1'
+    elif instr == ZBB_ROL:
+        res = Zbb.rol(rs1, rs2, XLEN)
+    elif instr == ZBB_ROLW:
+        res = Zbb.rolw(rs1, rs2, XLEN)
+    elif instr == ZBB_ROR:
+        res = Zbb.ror(rs1, rs2, XLEN)
+    elif instr == ZBB_RORW:
+        res = Zbb.rorw(rs1, rs2, XLEN)
     # logic for all other instr ends
     else:
         res = 0

@@ -212,3 +212,69 @@ def zexth(rs, XLEN):
         i += 1
 
     return int(ba, 2)
+
+
+def rol(rs1, rs2, XLEN):
+    """performs a rotate left of rs1 by the amount in least-significant log2(XLEN) bits of rs2"""
+
+    b1 = getBits(rs1, XLEN)
+    b2 = getBits(rs2, XLEN)
+    n = 5
+    if XLEN == 64:
+        n = 6
+
+    r = int(b2[-n:], 2)
+    ans = b1[r:]+b1[:r]
+    return int(ans, 2)
+
+
+def rolw(rs1, rs2, XLEN):
+    """performs a rotate left on the least-significant word of rs1 by the amount in least-significant 5 bits of rs2. The resulting word value is sign-extended by copying bit 31 to all of the more-significant bits"""
+
+    b1 = getBits(rs1, XLEN)
+    b1 = b1[-32:]
+    b2 = getBits(rs2, XLEN)
+    n = 5
+
+    r = int(b2[-n:], 2)
+    sub = b1[r:]+b1[:r]
+    c = sub[0]
+    i = 32
+    while i < XLEN:
+        sub = c + sub
+        i += 1
+
+    return int(sub, 2)
+
+
+def ror(rs1, rs2, XLEN):
+    """performs a rotate right of rs1 by the amount in least-significant log2(XLEN) bits of rs2"""
+
+    b1 = getBits(rs1, XLEN)
+    b2 = getBits(rs2, XLEN)
+    n = 5
+    if XLEN == 64:
+        n = 6
+
+    r = int(b2[-n:], 2)
+    ans = b1[-r:]+b1[:(-r)]
+    return int(ans, 2)
+
+
+def rorw(rs1, rs2, XLEN):
+    """performs a rotate right on the least-significant word of rs1 by the amount in least-significant 5 bits of rs2. The resultant word is sign-extended by copying bit 31 to all of the more-significant bits"""
+
+    b1 = getBits(rs1, XLEN)
+    b1 = b1[-32:]
+    b2 = getBits(rs2, XLEN)
+    n = 5
+
+    r = int(b2[-n:], 2)
+    sub = b1[-r:]+b1[:(-r)]
+    c = sub[0]
+    i = 32
+    while i < XLEN:
+        sub = c + sub
+        i += 1
+
+    return int(sub, 2)
