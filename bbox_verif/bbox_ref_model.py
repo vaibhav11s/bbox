@@ -22,6 +22,8 @@ Note - if instr has single operand, take rs1 as an operand
 
 import Zbb_test as Zbb
 import Zbc_test as Zbc
+import Zbs_test as Zbs
+import Zba_test as Zba
 from constants import *
 def bbox_rm(instr, rs1, rs2, XLEN):
 
@@ -99,10 +101,61 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         valid = '1'
     elif instr == ZBC_CLMUL:
         res = Zbc.clmul(rs1, rs2, XLEN)
+        valid = '1'
     elif instr == ZBC_CLMULH:
         res = Zbc.clmulh(rs1, rs2, XLEN)
+        valid = '1'
     elif instr == ZBC_CLMULR:
         res = Zbc.clmulr(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BCLR:
+        res = Zbs.bclr(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BCLRI:
+        res = Zbs.bclr(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BEXT:
+        res = Zbs.bext(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BEXTI:
+        res = Zbs.bext(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BINV:
+        res = Zbs.binv(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BINVI:
+        res = Zbs.binv(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BSET:
+        res = Zbs.bset(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBS_BSETI:
+        res = Zbs.bset(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_ADDUWZ:
+        res = Zba.adduwz(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH1ADD:
+        res = Zba.sh1add(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH1ADDUW:
+        res = Zba.sh1adduw(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH2ADD:
+        res = Zba.sh2add(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH2ADDUW:
+        res = Zba.sh2adduw(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH3ADD:
+        res = Zba.sh3add(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SH3ADDUW:
+        res = Zba.sh3adduw(rs1, rs2, XLEN)
+        valid = '1'
+    elif instr == ZBA_SLLIUW:
+        res = Zba.slliuw(rs1, XLEN)
+        valid = '1'
     # logic for all other instr ends
     else:
         res = 0

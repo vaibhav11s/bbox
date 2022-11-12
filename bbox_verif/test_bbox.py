@@ -154,7 +154,23 @@ if base == 'RV32':
         (ZBB_REV8, 'rev8', 1),
         (ZBC_CLMUL, 'clmul', 0),
         (ZBC_CLMULH, 'clmulh', 0),
-        (ZBC_CLMULR, 'clmulr', 0)
+        (ZBC_CLMULR, 'clmulr', 0),
+        (ZBS_BCLR, 'bclr', 0),
+        (ZBS_BCLRI, 'bclri', 0),
+        (ZBS_BEXT, 'bext', 0),
+        (ZBS_BEXTI, 'bexti', 0),
+        (ZBS_BINV, 'binv', 0),
+        (ZBS_BINVI, 'binvi', 0),
+        (ZBS_BSET, 'bset', 0),
+        (ZBS_BSETI, 'bseti', 0),
+        (ZBA_ADDUWZ, 'adduwz', 0),
+        (ZBA_SH1ADD, 'sh1add', 0),
+        (ZBA_SH1ADDUW, 'sh1adduw', 0),
+        (ZBA_SH2ADD, 'sh2add', 0),
+        (ZBA_SH2ADDUW, 'sh2adduw', 0),
+        (ZBA_SH3ADD, 'sh3add', 0),
+        (ZBA_SH3ADDUW, 'sh3adduw', 0),
+        (ZBA_SLLIUW, 'slliuw', 1)
     ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).
@@ -191,7 +207,23 @@ elif base == 'RV64':
         (ZBB_REV8, 'rev8', 1),
         (ZBC_CLMUL, 'clmul', 0),
         (ZBC_CLMULH, 'clmulh', 0),
-        (ZBC_CLMULR, 'clmulr', 0)
+        (ZBC_CLMULR, 'clmulr', 0),
+        (ZBS_BCLR, 'bclr', 0),
+        (ZBS_BCLRI, 'bclri', 0),
+        (ZBS_BEXT, 'bext', 0),
+        (ZBS_BEXTI, 'bexti', 0),
+        (ZBS_BINV, 'binv', 0),
+        (ZBS_BINVI, 'binvi', 0),
+        (ZBS_BSET, 'bset', 0),
+        (ZBS_BSETI, 'bseti', 0),
+        (ZBA_ADDUWZ, 'adduwz', 0),
+        (ZBA_SH1ADD, 'sh1add', 0),
+        (ZBA_SH1ADDUW, 'sh1adduw', 0),
+        (ZBA_SH2ADD, 'sh2add', 0),
+        (ZBA_SH2ADDUW, 'sh2adduw', 0),
+        (ZBA_SH3ADD, 'sh3add', 0),
+        (ZBA_SH3ADDUW, 'sh3adduw', 0),
+        (ZBA_SLLIUW, 'slliuw', 1)
     ])
     # tf.add_option(('instr','instr_name','single_opd'), [(3, 'xnor', 0)])
     # if instruction has single operand, provide single_opd = 1 (please see below line).
