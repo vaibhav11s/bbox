@@ -186,25 +186,30 @@ function Bit#(XLEN) fn_rorw(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Rotate Right Wor
 endfunction
 
 
-// function Bit#(XLEN) fn_orcb(Bit#(XLEN) rs1); // Bitwise OR-Combine, byte granule
-//   let xlen = valueOf(XLEN);
-//   Bit#(XLEN) result = 0;
-//   for(Integer i=0; i<xlen; i=i+8) begin
-//     Bit#(8) dbyte = rs1[i+7:i];
-//     Bit#(8) new_byte = signExtend(|(dbyte));
-//     result[i+7:i] = new_byte;
-//   end
-//   return result;
-// endfunction
+function Bit#(XLEN) fn_orcb(Bit#(XLEN) rs1); // Bitwise OR-Combine, byte granule
+  let ln = valueOf(XLEN);
+  Bit#(XLEN) result = 0;
+  Integer i = 0;
+  for(i = 0; i < ln; i = i + 8) begin
+    Bit#(8) dbyte = rs1[i+7:i];
+    Bit#(1) isSet = |(dbyte);
+    Bit#(8) newbyte = 0;
+    if(isSet == 1)
+      newbyte = 255;
+    result[i+7:i] = newbyte;
+  end
+  return result;
+endfunction
 
-// function Bit#(XLEN) fn_rev8(Bit#(XLEN) rs1); // Byte-reverse register
-//   let xlen = valueOf(XLEN);
-//   Bit#(XLEN) result = 0;
-//   Integer j = xlen-1;
-//   for(Integer i=0; i<xlen; i=i+8) begin
-//     Bit#(8) dbyte = rs1[j:j-7];
-//     result[i+7:i] = dbyte;
-//     j = j-8;
-//   end
-//   return result;
-// endfunction
+function Bit#(XLEN) fn_rev8(Bit#(XLEN) rs1); // Byte-reverse register
+  let xlen = valueOf(XLEN);
+  Bit#(XLEN) result = 0;
+  Integer j = xlen-1;
+  Integer i = 0;
+  for(i = 0; i < xlen; i = i + 8) begin
+    Bit#(8) dbyte = rs1[j:j-7];
+    result[i+7:i] = dbyte;
+    j = j - 8;
+  end
+  return result;
+endfunction

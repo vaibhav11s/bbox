@@ -122,6 +122,14 @@ function BBoxOutput fn_compute(BBoxInput inp);
       result = fn_rorw(inp.rs1,inp.rs2);
       valid = True;
     end
+    `ORCB: begin
+      result = fn_orcb(inp.rs1);
+      valid = True;
+    end
+    `REV8: begin
+      result = fn_rev8(inp.rs1);
+      valid = True;
+    end
     default: begin
       result = 0;
       valid = False;

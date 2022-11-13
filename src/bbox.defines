@@ -33,3 +33,25 @@ Details: Has the macros used for instruction comparison
 `define RORI 20
 `define RORIW 21
 `define RORW 22
+`define ORCB 23
+`define REV8 24
+`define CLMUL 25
+`define CLMULH 26
+`define CLMULR 27
+`define BCLR 28
+`define BCLRI 29
+`define BEXT 30
+`define BEXTI 31
+`define BINV 32
+`define BINVI 33
+`define BSET 34
+`define BSETI 35
+`define ADDUWZ 36
+`define SH1ADD 37
+`define SH1ADDUW 38
+`define SH2ADD 39
+`define SH2ADDUW 40
+`define SH3ADD 41
+`define SH3ADDUW 42
+`define SLLIUW 43
+
