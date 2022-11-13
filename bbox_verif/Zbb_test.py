@@ -309,13 +309,7 @@ def rev8(rs, XLEN):
 
     b = getBits(rs, XLEN)
     ans = ''
-    i = 0
-
-    while i < XLEN:
-        j = i + 7
-        while j >= i:
-            ans = ans + b[j]
-            j -= 1
-        i += 8
-
+    n = XLEN // 8
+    for i in range(n):
+        ans = b[i*8:i*8+8] + ans
     return int(ans, 2)

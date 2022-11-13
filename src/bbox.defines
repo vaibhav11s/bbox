@@ -46,7 +46,7 @@ Details: Has the macros used for instruction comparison
 `define BINVI 33
 `define BSET 34
 `define BSETI 35
-`define ADDUWZ 36
+`define ADDUW 36
 `define SH1ADD 37
 `define SH1ADDUW 38
 `define SH2ADD 39

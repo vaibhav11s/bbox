@@ -132,8 +132,8 @@ def bbox_rm(instr, rs1, rs2, XLEN):
     elif instr == ZBS_BSETI:
         res = Zbs.bset(rs1, rs2, XLEN)
         valid = '1'
-    elif instr == ZBA_ADDUWZ:
-        res = Zba.adduwz(rs1, rs2, XLEN)
+    elif instr == ZBA_ADDUW:
+        res = Zba.adduw(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBA_SH1ADD:
         res = Zba.sh1add(rs1, rs2, XLEN)

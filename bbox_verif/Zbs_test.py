@@ -24,14 +24,16 @@ def binv(rs1, rs2, XLEN):
 
     i = rs2 & (XLEN-1)
     out = rs1 ^ (1 << i)
+    ans = getBits(out, XLEN)
 
-    return out
+    return int(ans, 2)
 
 
 def bset(rs1, rs2, XLEN):
     """returns rs1 with a single bit set at the index specified in rs2"""
 
     i = rs2 & (XLEN-1)
-    out = rs1 | (1 << index)
+    out = rs1 | (1 << i)
+    ans = getBits(out, XLEN)
 
-    return out
+    return int(ans, 2)
