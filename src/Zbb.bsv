@@ -170,10 +170,36 @@ function Bit#(XLEN) fn_ror(Bit#(XLEN) rs1, Bit#(XLEN) rs2) provisos (Log#(XLEN,b
   return result;
 endfunction
 
+function Bit#(XLEN) fn_rori(Bit#(XLEN) rs1, Bit#(6) shamt) provisos (Log#(XLEN,b),Mul#(XLEN,2,x2len)); // Rotate Right (Register)
+  Integer ln = valueOf(XLEN);
+  Integer ln2 = valueOf(x2len);
+  if(ln == 32)
+    shamt[5] = 0;
+  Bit#(XLEN) zeros = 0;
+  Bit#(x2len) x = {rs1,zeros} >> shamt;
+  Bit#(XLEN) result = x[ln2-1:ln] | x[ln-1:0];
+  return result;
+endfunction
+
 function Bit#(XLEN) fn_rorw(Bit#(XLEN) rs1, Bit#(XLEN) rs2); // Rotate Right Word (Register)
   Bit#(32) zeros = 0; 
   Integer ln = valueOf(XLEN);
   Bit#(5) shamt = rs2[4:0];
+  Bit#(64) x = {rs1[31:0],zeros} >> shamt;
+  Bit#(32) w = x[63:32]|x[31:0];
+  Bit#(XLEN) result = rs1;
+  Integer i = 0;
+  for(i = 0; i < 32; i = i + 1)
+    result[i] = w[i];
+  for(i = 32; i < ln; i = i + 1)
+    result[i] = w[31];
+  return result;
+endfunction
+
+function Bit#(XLEN) fn_roriw(Bit#(XLEN) rs1, Bit#(6) shamt); // Rotate Right Word (Register)
+  Bit#(32) zeros = 0; 
+  Integer ln = valueOf(XLEN);
+  shamt[5] = 0;
   Bit#(64) x = {rs1[31:0],zeros} >> shamt;
   Bit#(32) w = x[63:32]|x[31:0];
   Bit#(XLEN) result = rs1;

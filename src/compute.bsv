@@ -111,11 +111,11 @@ function BBoxOutput fn_compute(BBoxInput inp);
       valid = True;
     end
     `RORI: begin
-      result = fn_ror(inp.rs1,inp.rs2);
+      result = fn_rori(inp.rs1,(inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
       valid = True;
     end
     `RORIW: begin
-      result = fn_rorw(inp.rs1,inp.rs2);
+      result = fn_roriw(inp.rs1,(inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
       valid = True;
     end
     `RORW: begin
