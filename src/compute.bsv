@@ -142,6 +142,70 @@ function BBoxOutput fn_compute(BBoxInput inp);
       result = fn_clmulr(inp.rs1,inp.rs2);
       valid = True;
     end
+    `BCLR: begin
+      result = fn_bclr(inp.rs1,inp.rs2);
+      valid = True;
+    end
+    `BCLRI: begin
+      result = fn_bclri(inp.rs1,(inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
+      valid = True;
+    end
+    `BEXT: begin
+      result = fn_bext(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `BEXTI: begin
+      result = fn_bexti(inp.rs1, (inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
+      valid = True;
+    end
+    `BINV: begin
+      result = fn_binv(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `BINVI: begin
+      result = fn_binvi(inp.rs1, (inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
+      valid = True;
+    end
+    `BSET: begin
+      result = fn_bset(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `BSETI: begin
+      result = fn_bseti(inp.rs1, (inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
+      valid = True;
+    end
+    `ADDUW: begin
+      result = fn_adduw(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH1ADD: begin
+      result = fn_sh1add(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH1ADDUW: begin
+      result = fn_sh1adduw(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH2ADD: begin
+      result = fn_sh2add(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH2ADDUW: begin
+      result = fn_sh2adduw(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH3ADD: begin
+      result = fn_sh3add(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SH3ADDUW: begin
+      result = fn_sh3adduw(inp.rs1, inp.rs2);
+      valid = True;
+    end
+    `SLLIUW: begin
+      result = fn_slliuw(inp.rs1, (inp.rs2)[25:20]); // using inp.rs2 in place of inp.instr, just for randomness
+      valid = True;
+    end
     default: begin
       result = 0;
       valid = False;
