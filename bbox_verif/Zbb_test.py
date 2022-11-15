@@ -261,6 +261,36 @@ def ror(rs1, rs2, XLEN):
     return int(ans, 2)
 
 
+def rori(rs1, shamt, XLEN):
+    """performs a rotate right of rs1 by the amount in the least-significant log2(XLEN) bits of
+  shamt"""
+
+    b1 = getBits(rs1, XLEN)
+    r = shamt
+
+    ans = b1[-r:]+b1[:(-r)]
+    return int(ans, 2)
+
+
+def roriw(rs1, shamt, XLEN):
+    """performs a rotate right of rs1 by the amount in the least-significant log2(XLEN) bits of
+  shamt"""
+
+    b1 = getBits(rs1, XLEN)
+    b1 = b1[-32:]
+    r = shamt % 32
+
+    sub = b1[-r:]+b1[:(-r)]
+
+    c = sub[0]
+    i = 32
+    while i < XLEN:
+        sub = c + sub
+        i += 1
+
+    return int(sub, 2)
+
+
 def rorw(rs1, rs2, XLEN):
     """performs a rotate right on the least-significant word of rs1 by the amount in least-significant 5 bits of rs2. The resultant word is sign-extended by copying bit 31 to all of the more-significant bits"""
 

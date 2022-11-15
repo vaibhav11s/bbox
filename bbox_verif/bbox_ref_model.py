@@ -26,7 +26,10 @@ import Zbs_test as Zbs
 import Zba_test as Zba
 from constants import *
 def bbox_rm(instr, rs1, rs2, XLEN):
-
+    sham = bin(rs2)[-26:-20]
+    shamt = int(sham, 2)
+    if XLEN == 32:
+        shamt = int(sham[1:], 2)
     if instr == ZBB_ANDN:  # andn vrfy
         res = Zbb.andn(rs1, rs2, XLEN)
         valid = '1'
@@ -85,10 +88,10 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         res = Zbb.ror(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBB_RORI:
-        res = Zbb.ror(rs1, rs2, XLEN)
+        res = Zbb.rori(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBB_RORIW:
-        res = Zbb.rorw(rs1, rs2, XLEN)
+        res = Zbb.roriw(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBB_RORW:
         res = Zbb.rorw(rs1, rs2, XLEN)
@@ -112,25 +115,25 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         res = Zbs.bclr(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBS_BCLRI:
-        res = Zbs.bclr(rs1, rs2, XLEN)
+        res = Zbs.bclri(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBS_BEXT:
         res = Zbs.bext(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBS_BEXTI:
-        res = Zbs.bext(rs1, rs2, XLEN)
+        res = Zbs.bexti(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBS_BINV:
         res = Zbs.binv(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBS_BINVI:
-        res = Zbs.binv(rs1, rs2, XLEN)
+        res = Zbs.binvi(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBS_BSET:
         res = Zbs.bset(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBS_BSETI:
-        res = Zbs.bset(rs1, rs2, XLEN)
+        res = Zbs.bseti(rs1, shamt, XLEN)
         valid = '1'
     elif instr == ZBA_ADDUW:
         res = Zba.adduw(rs1, rs2, XLEN)
@@ -154,7 +157,7 @@ def bbox_rm(instr, rs1, rs2, XLEN):
         res = Zba.sh3adduw(rs1, rs2, XLEN)
         valid = '1'
     elif instr == ZBA_SLLIUW:
-        res = Zba.slliuw(rs1, XLEN)
+        res = Zba.slliuw(rs1, shamt, XLEN)
         valid = '1'
     # logic for all other instr ends
     else:

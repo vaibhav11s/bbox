@@ -79,13 +79,17 @@ def sh3adduw(rs1, rs2, XLEN):
     return out
 
 
-def slliuw(rs, XLEN):
+def slliuw(rs1, shamt, XLEN):
     """takes the least-significant word of rs1, zero-extends it, and shifts it left by the immediate"""
 
-    b = getBits(rs, XLEN)
-    c = b[-32:]
-    for i in range(32):
-        c = '0'+c
+    b = int(getBits(rs1, XLEN)[-32:] + "0"*shamt, 2)
+    ans = getBits(b, XLEN)
+    return int(ans, 2)
 
-    ans = int(c, 2)
-    return ans
+
+"""
+rs1 = 0b11000010000111001000101100110011011010001010101001000111100111 rs2 = 0b11010010100010100001101010101010100111011010010100100000100010
+
+111011010001010101001000111100111000000000000000000000000000000000000000000000000000000
+10111100111000000000000000000000000000000000000000000000000000000
+"""
